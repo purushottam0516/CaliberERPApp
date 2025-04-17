@@ -118,6 +118,9 @@
 
         public decimal GRNQty { get; set; }
 
+
+        public int IsNew { get; set; }
+
         //Gets or sets the downloaded on date.
 
         public DateTime DownloadedOn { get; set; } = DateTime.UtcNow;
