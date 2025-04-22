@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Caliber_API.Controllers.BioPharma
 {
-    [Route("[controller]")]
+    [Route("API[controller]")]
     [ApiController]
     [ServiceFilter(typeof(AuthFilter))]
     public class BioInboundRequestController : ControllerBase
