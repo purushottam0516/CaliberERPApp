@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Caliber_Models\Caliber_Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Torrent\" />
-  </ItemGroup>
-
 </Project>
