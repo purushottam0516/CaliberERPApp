@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://cqmd72024.aurelius.com/CaliberERPSAPAPI",
+      "applicationUrl": "https://cqmd72024.aurelius.com/CaliberERPSAPAPI",
       "sslPort": 0
     },
     "iisExpress": {
@@ -35,7 +35,7 @@
     },
 
     "CaliberERPSAPAPI": {
-      "applicationUrl": "http://cqmd72024.aurelius.com/CaliberERPSAPAPI",
+      "applicationUrl": "https://cqmd72024.aurelius.com/CaliberERPSAPAPI",
       "commandName": "IIS",
       "dotnetRunMessages": true,
       "environmentVariables": {
