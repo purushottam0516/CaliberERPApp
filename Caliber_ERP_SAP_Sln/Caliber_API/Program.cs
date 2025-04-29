@@ -8,6 +8,11 @@ using Caliber_Components.Token;
 var builder = WebApplication.CreateBuilder(args);
 
 var tokenSettings = builder.Configuration.GetSection("TokenSettings").Get<TokenSettings>();
+
+ApiKey.Path = builder.Configuration.GetSection("ErrPath").Get<string>() ?? "";
+
+ApiKey.ErrFlag = builder.Configuration.GetSection("ErrFlag").Get<int>();
+
 if (tokenSettings != null)
 {
     Tokens.SetTokenSettings(tokenSettings);

@@ -1,4 +1,4 @@
-﻿
+﻿using Caliber_Components.Logs;
 
 namespace Caliber_Components.DBComponents
 {
@@ -100,6 +100,7 @@ namespace Caliber_Components.DBComponents
             {
                 exceptionNo = 1;
                 exceptionMsg = ex.Message; // Avoid using `ex.ToString()` unless needed for debugging purposes.
+                ErrorLog.MaintainLog(ex.Message);
             }
 
             // Handle output parameters
@@ -127,6 +128,7 @@ namespace Caliber_Components.DBComponents
                     }
                     catch (Exception ex)
                     {
+                        ErrorLog.MaintainLog(ex.Message);
                         exceptionNo = 2;
                         exceptionMsg += $"\nError processing output parameter {prop.Name}: {ex.Message}";
                     }
@@ -207,8 +209,9 @@ namespace Caliber_Components.DBComponents
                     return result!;
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                ErrorLog.MaintainLog(ex.Message);
                 throw; // Re-throw the exception to allow higher-level handling
             }
         }
@@ -242,6 +245,7 @@ namespace Caliber_Components.DBComponents
             }
             catch (Exception ex)
             {
+                ErrorLog.MaintainLog(ex.Message);
                 throw new Exception("An error occurred while retrieving the list of data.", ex);
             }
         }

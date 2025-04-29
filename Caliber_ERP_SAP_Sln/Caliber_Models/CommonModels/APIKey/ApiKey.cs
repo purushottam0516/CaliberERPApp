@@ -4,6 +4,9 @@
     {
         public static ApiKeyModel Apikeys { get; set; } = new();
 
+        public static string Path { get; set; } = "";
+        public static int ErrFlag { get; set; } = 0;
+
         public static void SetApiKeys(ApiKeyModel apikey)
         {
             Apikeys = apikey;
