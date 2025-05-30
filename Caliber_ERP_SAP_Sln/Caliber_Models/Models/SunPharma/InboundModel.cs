@@ -1,4 +1,6 @@
-﻿namespace Caliber_Models.Models.SunPharma
+﻿using System.ComponentModel;
+
+namespace Caliber_Models.Models.SunPharma
 {
     public class InboundModel
     {
@@ -125,16 +127,52 @@
 
         public DateTime DownloadedOn { get; set; } = DateTime.UtcNow;
 
+       // public int InspectionintervalDays { get; set; }=0;
+
+        public string Samplinglevel { get; set; } = string.Empty;
+
+        //public DateTime VendorRetestdate { get; set; }= DateTime.UtcNow;
+
+        //public string Stage { get; set; }= string.Empty;
+
+       // public string MotherBatchNo { get; set; } = string.Empty;
+
+        public string InspectionLot { get; set; } = string.Empty;
+
+        public string TRFNo { get; set; } = string.Empty;
+
+        public DateTime TRDate { get; set; }=DateTime.UtcNow;
+
+        public decimal AllocatedQuantity { get; set; }
+
+        public string CountryMarket { get; set; } = string.Empty;
+
+        public string StorageRoomBin { get; set; } = string.Empty;
+
+        public string Storageconditions { get; set; } = string.Empty;
+
+        public string SampleHandlingRemarksIfAny { get; set; } = string.Empty;
+
+        public decimal ChemicalAnalysissamplingQty { get; set; }
+
+        public decimal MicrobiologicalAnalysisqty { get; set; }
+
+        public string OtherSample { get; set; } = string.Empty;
+
+        public decimal TotalSampleQty { get; set; }
+
+        public decimal ReserveSampleqty { get; set; }
+
+        public string TotalNoofcontainerSampled { get; set; }=string.Empty; 
+
+        public string Sampledon { get; set; } = string.Empty;
+
+        public DateTime NextInspectionDate { get; set; } = DateTime.UtcNow;
+
+        public DateTime SAPReleaseDate { get; set; }=DateTime.UtcNow;
+
+        public decimal IsReduceTestingLot { get; set; }
+
     }
 
-    public class SunparmaInboundResponseModel
-    {
-        //Gets or sets the return status.
-
-        public int ReturnStatus { get; set; }
-
-        //Gets or sets the key field.
-
-        public string KeyField { get; set; } = string.Empty;
-    }
 }

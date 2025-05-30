@@ -3,6 +3,7 @@ using Caliber_Components.Authentication.APIKey;
 using Caliber_Components.Authentication.Token;
 using Caliber_Components.Autherization;
 using Caliber_Components.DBComponents;
+using Caliber_Components.GlobalVariables;
 using Caliber_Components.Token;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,9 @@ var tokenSettings = builder.Configuration.GetSection("TokenSettings").Get<TokenS
 ApiKey.Path = builder.Configuration.GetSection("ErrPath").Get<string>() ?? "";
 
 ApiKey.ErrFlag = builder.Configuration.GetSection("ErrFlag").Get<int>();
+
+LoadConnectionStrings.SetConnectionStr(builder.Configuration);
+
 
 if (tokenSettings != null)
 {
