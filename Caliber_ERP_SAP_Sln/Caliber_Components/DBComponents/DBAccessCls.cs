@@ -138,6 +138,19 @@ namespace Caliber_Components.DBComponents
             return (outputParams ?? new object(), exceptionMsg ?? string.Empty, exceptionNo);
         }
 
+        public async Task<(object OutputParams, string ExceptionMsg, int ExceptionNo)> ExtWriteDataAsync(
+                string connectionString,
+                CommandType commandtype,
+                string CommandText,
+                object InputParams,
+                object? outputParams
+            )
+        {
+            var result = await ExtWriteDataAsync(connectionString, commandtype, CommandText, new List<object> { InputParams }, outputParams);
+
+            return (result.OutputParams ?? new object(), result.ExceptionMsg ?? string.Empty, result.ExceptionNo);
+        }
+
         /// <summary>
         /// Executes a database command with provided input parameters, retrieves output parameters if any, and manages database transactions.
         /// </summary>

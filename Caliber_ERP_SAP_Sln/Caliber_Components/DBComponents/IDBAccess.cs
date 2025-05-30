@@ -60,5 +60,13 @@
             string commandText,
             CommandType commandType,
             object param);
+
+        Task<(object OutputParams, string ExceptionMsg, int ExceptionNo)> ExtWriteDataAsync(
+               string connectionString,
+               CommandType commandtype,
+               string CommandText,
+               object InputParams,
+               object? outputParams
+           );
     }
 }
