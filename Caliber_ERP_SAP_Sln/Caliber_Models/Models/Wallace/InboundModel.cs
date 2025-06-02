@@ -49,7 +49,7 @@ namespace Caliber_Models.Models.Wallace
         [JsonPropertyName("VendorName1")]
         public string SupplierName { get; set; } = string.Empty;
 
-        [JsonPropertyName(" ManufactNum")]
+        [JsonPropertyName("ManufactNum")]
         public string ManufactureCode { get; set; } = string.Empty;
 
         [JsonPropertyName(" ManufactName1")]

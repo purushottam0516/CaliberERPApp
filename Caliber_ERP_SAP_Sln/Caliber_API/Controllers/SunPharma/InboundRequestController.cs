@@ -25,7 +25,7 @@ namespace Caliber_API.Controllers.SunPharma
         {
             if (ModelState.IsValid)
             {
-                var response = await dbAccess.WriteDataAsync(CommandType.StoredProcedure, "STP_SAP_ADD_LOT", requestModel, new ResponseModel());
+                var response = await dbAccess.WriteDataAsync(CommandType.StoredProcedure, "STP_LIMS_ADD_LOT", requestModel, new ResponseModel());
 
 
                 if (response.OutputParams is ResponseModel InboundResponseModel && ((ResponseModel)response.OutputParams).ReturnStatus > 0)
