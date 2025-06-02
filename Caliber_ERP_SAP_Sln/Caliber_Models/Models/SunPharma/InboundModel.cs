@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace Caliber_Models.Models.SunPharma
 {
@@ -13,67 +14,70 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the item description.
 
-        public string ItemDesc { get; set; } = string.Empty;
+        [JsonPropertyName("ItemDesc")]
+        public string MaterialDesc { get; set; } = string.Empty;
 
         //Gets or sets the item code.
 
-        public string ItemCode { get; set; } = string.Empty;
+        [JsonPropertyName("ItemCode")]
+        public string MaterialNum { get; set; } = string.Empty;
 
         //Gets or sets the manufacture name.
 
-        public string ManufactureName { get; set; } = string.Empty;
+        [JsonPropertyName("ManufactureName")]
+        public string ManufactName1 { get; set; } = string.Empty;
 
         // Gets or sets the manufacture code.
-
-        public string ManufactureCode { get; set; } = string.Empty;
+        [JsonPropertyName("ManufactureCode")]
+        public string ManufactNum { get; set; } = string.Empty;
 
         //Gets or sets the supplier name.
-
-        public string SupplierName { get; set; } = string.Empty;
+        [JsonPropertyName("SupplierName")]
+        public string VendorName1 { get; set; } = string.Empty;
 
         //Gets or sets the supplier code.
-
-        public string SupplierCode { get; set; } = string.Empty;
+        [JsonPropertyName("SupplierCode")]
+        public string VendorNum { get; set; } = string.Empty;
 
         //Gets or sets the batch number.
-
-        public string BatchNo { get; set; } = string.Empty;
+        [JsonPropertyName("BatchNo")]
+        public string BatchNumber { get; set; } = string.Empty;
 
         //Gets or sets the batch quantity.
-
-        public decimal BatchQuantity { get; set; } = 0;
+        [JsonPropertyName("BatchQuantity")]
+        public decimal InspectionLotQty { get; set; } = 0;
 
         // Gets or sets the batch unit of measure.
-
-        public string BatchUOM { get; set; } = string.Empty;
+        [JsonPropertyName("BatchUOM")]
+        public string InspectionLotUnit { get; set; } = string.Empty;
 
         //Gets or sets the batch manufacture date.
-
-        public DateTime BatchManufactureDate { get; set; }
+        [JsonPropertyName("BatchManufactureDate")]
+        public DateTime MfgDate { get; set; }
 
         //Gets or sets the expiry date.
-
-        public DateTime ExpiryDate { get; set; }
+        [JsonPropertyName("ExpiryDate")]
+        public DateTime ExpDate { get; set; }
 
         //Gets or sets the retest date.
-
-        public DateTime RetestDate { get; set; }
+        [JsonPropertyName("RetestDate")]
+        public DateTime ReTestDate { get; set; }
 
         //Gets or sets the ExpiryRetestIndicator.
-
-        public string EX_RT_Indicator { get; set; } = string.Empty;
+        [JsonPropertyName("EX_RT_Indicator")]
+        public string ExpiryRetestIndicator { get; set; } = string.Empty;
 
         //Gets or sets the sample number.
 
-        public string SampleNo { get; set; } = string.Empty;
+        public int SampleNo { get; set; } = 0;
 
         //Gets or sets the sample quantity.
-
-        public decimal SampleQty { get; set; } = 0;
+        [JsonPropertyName("SampleQty")]
+        public decimal InspectionLotSmpSize { get; set; } = 0;
 
         //Gets or sets the sample quantity unit of measure.
-
-        public string SampleQtyUOM { get; set; } = string.Empty;
+        [JsonPropertyName("SampleQtyUOM")]
+        public string SampleSizeUnit { get; set; } = string.Empty;
 
         //Gets or sets the sampling by.
 
@@ -84,37 +88,36 @@ namespace Caliber_Models.Models.SunPharma
         public string InspectionType { get; set; } = string.Empty;
 
         //Gets or sets the plant code.
-
-        public string PlantCode { get; set; } = string.Empty;
+        [JsonPropertyName("PlantCode")]
+        public string InspectionLotPlant { get; set; } = string.Empty;
 
         //Gets or sets the created by.
 
         public string CreatedBy { get; set; } = string.Empty;
 
         //Gets or sets the created on date.
-
-        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+        [JsonPropertyName("CreatedOn")]
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
         //Gets or sets the total number of containers.
-
-        public int TotalNoOfContainers { get; set; } = 0;
+        [JsonPropertyName("TotalNoOfContainers")]
+        public int NoContainers { get; set; } = 0;
 
         //Gets or sets the vendor batch number.
-
-        public string VendorBatchNo { get; set; } = string.Empty;
-
+        [JsonPropertyName("VendorBatchNo")]
+        public string VendorBatchNum { get; set; } = string.Empty;
 
         //Gets or sets the GRN number.
-
-        public string GRNNo { get; set; } = string.Empty;
+        [JsonPropertyName("GRNNo")]
+        public string MaterialDocNum { get; set; } = string.Empty;
 
         //Gets or sets the GRN date.
 
         public DateTime GRNDate { get; set; }
 
         //Gets or sets the GRN unit of measure.
-
-        public string GRNUOM { get; set; } = string.Empty;
+        [JsonPropertyName("GRNUOM")]
+        public string GRNUom { get; set; } = string.Empty;
 
         //Gets or sets the GRN quantity.
 
@@ -131,19 +134,21 @@ namespace Caliber_Models.Models.SunPharma
 
         public string Samplinglevel { get; set; } = string.Empty;
 
-        //public DateTime VendorRetestdate { get; set; }= DateTime.UtcNow;
+        //[JsonPropertyName("VendorRetestdate")]
+        //public DateTime VendorRetestDate { get; set; }= DateTime.UtcNow;
 
         //public string Stage { get; set; }= string.Empty;
 
-       // public string MotherBatchNo { get; set; } = string.Empty;
-
-        public string InspectionLot { get; set; } = string.Empty;
+        // public string MotherBatchNo { get; set; } = string.Empty;
+        [JsonPropertyName("InspectionLot")]
+        public string InspectionLotNum { get; set; } = string.Empty;
 
         public string TRFNo { get; set; } = string.Empty;
 
-        public DateTime TRDate { get; set; }=DateTime.UtcNow;
+        public DateTime TRDate { get; set; }
 
-        public decimal AllocatedQuantity { get; set; }
+        [JsonPropertyName("AllocatedQuantity")]
+        public decimal AllocatedQty { get; set; }
 
         public string CountryMarket { get; set; } = string.Empty;
 
@@ -151,27 +156,37 @@ namespace Caliber_Models.Models.SunPharma
 
         public string Storageconditions { get; set; } = string.Empty;
 
-        public string SampleHandlingRemarksIfAny { get; set; } = string.Empty;
+        [JsonPropertyName("SampleHandlingRemarksIfAny")]
+        public string SmpHandlingRemarksIfAny { get; set; } = string.Empty;
 
-        public decimal ChemicalAnalysissamplingQty { get; set; }
+        [JsonPropertyName("ChemicalAnalysissamplingQty")]
+        public decimal ChmAnalysisSmpQty { get; set; }
 
-        public decimal MicrobiologicalAnalysisqty { get; set; }
+        [JsonPropertyName("MicrobiologicalAnalysisqty")]
+        public decimal MicroBioAnalysisQty { get; set; }
 
-        public string OtherSample { get; set; } = string.Empty;
+        [JsonPropertyName("OtherSample")]
+        public string OtherSmp { get; set; } = string.Empty;
 
-        public decimal TotalSampleQty { get; set; }
+        [JsonPropertyName("TotalSampleQty")]
+        public decimal TotalSmpQty { get; set; }
 
-        public decimal ReserveSampleqty { get; set; }
+        [JsonPropertyName("ReserveSampleqty")]
+        public decimal ResSmpQty { get; set; }
 
-        public string TotalNoofcontainerSampled { get; set; }=string.Empty; 
+        [JsonPropertyName("TotalNoofcontainerSampled")]
+        public string NoContainersSampled { get; set; }=string.Empty;
 
-        public string Sampledon { get; set; } = string.Empty;
+        [JsonPropertyName("Sampledon")]
+        public DateTime SampledOn { get; set; } 
 
-        public DateTime NextInspectionDate { get; set; } = DateTime.UtcNow;
+        [JsonPropertyName("NextInspectionDate")]
+        public DateTime NextInspDate { get; set; }
 
-        public DateTime SAPReleaseDate { get; set; }=DateTime.UtcNow;
+        public DateTime SAPReleaseDate { get; set; }
 
-        public decimal IsReduceTestingLot { get; set; }
+        [JsonPropertyName("IsReduceTestingLot")]
+        public decimal IsReduceTstLot { get; set; }
 
     }
 
