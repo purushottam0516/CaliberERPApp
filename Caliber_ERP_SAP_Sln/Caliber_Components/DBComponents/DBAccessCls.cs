@@ -271,5 +271,28 @@ namespace Caliber_Components.DBComponents
             ConnKey = string.Empty;
             CommandTimeOut = null;
         }
+
+        public async Task<List<T>> ExtReadDataList<T>(string connectionString, CommandType commandType, string commandText, object param)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    var result = await connection.QueryAsync<T>(
+                        commandText,
+                        param,
+                        commandType: commandType
+                    );
+                    return result.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.MaintainLog(ex.Message);
+                throw new Exception("An error occurred while retrieving the list of data.", ex);
+            }
+        }
     }
 }

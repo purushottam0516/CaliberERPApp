@@ -48,6 +48,12 @@
             string commandText,
             object param);
 
+        Task<List<T>> ExtReadDataList<T>(
+           string connectionString,
+           CommandType commandType,
+           string commandText,
+           object param);
+
         /// <summary>
         /// Executes a database command and retrieves a list of data.
         /// </summary>
