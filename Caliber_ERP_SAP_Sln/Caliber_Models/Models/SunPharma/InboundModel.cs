@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Caliber_Models.Models.SunPharma
 {
@@ -10,7 +9,8 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the memo date.
 
-        public DateTime MemoDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))] 
+        public DateTime? MemoDate { get; set; } 
 
         //Gets or sets the item description.
 
@@ -45,7 +45,7 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the batch quantity.
         [JsonPropertyName("BatchQuantity")]
-        public decimal InspectionLotQty { get; set; } = 0;
+        public string InspectionLotQty { get; set; } = string.Empty;
 
         // Gets or sets the batch unit of measure.
         [JsonPropertyName("BatchUOM")]
@@ -53,15 +53,18 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the batch manufacture date.
         [JsonPropertyName("BatchManufactureDate")]
-        public DateTime MfgDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? MfgDate { get; set; }
 
         //Gets or sets the expiry date.
         [JsonPropertyName("ExpiryDate")]
-        public DateTime ExpDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? ExpDate { get; set; }
 
         //Gets or sets the retest date.
         [JsonPropertyName("RetestDate")]
-        public DateTime ReTestDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? ReTestDate { get; set; } 
 
         //Gets or sets the ExpiryRetestIndicator.
         [JsonPropertyName("EX_RT_Indicator")]
@@ -69,11 +72,11 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the sample number.
 
-        public int SampleNo { get; set; } = 0;
+        public string SampleNo { get; set; } = string.Empty;
 
         //Gets or sets the sample quantity.
         [JsonPropertyName("SampleQty")]
-        public decimal InspectionLotSmpSize { get; set; } = 0;
+        public string InspectionLotSmpSize { get; set; } = string.Empty;
 
         //Gets or sets the sample quantity unit of measure.
         [JsonPropertyName("SampleQtyUOM")]
@@ -89,7 +92,7 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the plant code.
         [JsonPropertyName("PlantCode")]
-        public string InspectionLotPlant { get; set; } = string.Empty;
+        public int InspectionLotPlant { get; set; } = 0;
 
         //Gets or sets the created by.
 
@@ -97,7 +100,8 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the created on date.
         [JsonPropertyName("CreatedOn")]
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? CreatedDate { get; set; } 
 
         //Gets or sets the total number of containers.
         [JsonPropertyName("TotalNoOfContainers")]
@@ -109,11 +113,11 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the GRN number.
         [JsonPropertyName("GRNNo")]
-        public string MaterialDocNum { get; set; } = string.Empty;
+        public long MaterialDocNum { get; set; } = 0;  //string
 
         //Gets or sets the GRN date.
-
-        public DateTime GRNDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? GRNDate { get; set; } 
 
         //Gets or sets the GRN unit of measure.
         [JsonPropertyName("GRNUOM")]
@@ -121,34 +125,28 @@ namespace Caliber_Models.Models.SunPharma
 
         //Gets or sets the GRN quantity.
 
-        public decimal GRNQty { get; set; }
+        public string GRNQty { get; set; } = string.Empty;
 
 
-        public int IsModified { get; set; } = 0;
+        //public int IsModified { get; set; } = 0;
 
         //Gets or sets the downloaded on date.
-
-        public DateTime DownloadedOn { get; set; } = DateTime.UtcNow;
-
-       // public int InspectionintervalDays { get; set; }=0;
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? DownloadedOn { get; set; } 
 
         public string Samplinglevel { get; set; } = string.Empty;
-
-        //[JsonPropertyName("VendorRetestdate")]
-        //public DateTime VendorRetestDate { get; set; }= DateTime.UtcNow;
-
-        //public string Stage { get; set; }= string.Empty;
-
-        // public string MotherBatchNo { get; set; } = string.Empty;
+       
         [JsonPropertyName("InspectionLot")]
         public string InspectionLotNum { get; set; } = string.Empty;
 
         public string TRFNo { get; set; } = string.Empty;
 
-        public DateTime TRDate { get; set; }
+        //public DateTime TRDate { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? TRDate { get; set; }
 
         [JsonPropertyName("AllocatedQuantity")]
-        public decimal AllocatedQty { get; set; }
+        public string AllocatedQty { get; set; } = string.Empty;
 
         public string CountryMarket { get; set; } = string.Empty;
 
@@ -160,33 +158,26 @@ namespace Caliber_Models.Models.SunPharma
         public string SmpHandlingRemarksIfAny { get; set; } = string.Empty;
 
         [JsonPropertyName("ChemicalAnalysissamplingQty")]
-        public decimal ChmAnalysisSmpQty { get; set; }
+        public string ChmAnalysisSmpQty { get; set; } = string.Empty;
 
         [JsonPropertyName("MicrobiologicalAnalysisqty")]
-        public decimal MicroBioAnalysisQty { get; set; }
+        public string MicroBioAnalysisQty { get; set; } = string.Empty;
 
         [JsonPropertyName("OtherSample")]
         public string OtherSmp { get; set; } = string.Empty;
 
         [JsonPropertyName("TotalSampleQty")]
-        public decimal TotalSmpQty { get; set; }
+        public string TotalSmpQty { get; set; } = string.Empty;
 
-        [JsonPropertyName("ReserveSampleqty")]
-        public decimal ResSmpQty { get; set; }
+        //[JsonPropertyName("ReserveSampleqty")]
+        //public string ResSmpQty { get; set; }
 
         [JsonPropertyName("TotalNoofcontainerSampled")]
         public string NoContainersSampled { get; set; }=string.Empty;
 
         [JsonPropertyName("Sampledon")]
-        public DateTime SampledOn { get; set; } 
-
-        [JsonPropertyName("NextInspectionDate")]
-        public DateTime NextInspDate { get; set; }
-
-        public DateTime SAPReleaseDate { get; set; }
-
-        [JsonPropertyName("IsReduceTestingLot")]
-        public decimal IsReduceTstLot { get; set; }
+        [JsonConverter(typeof(DateTimeConverter))]
+        public DateTime? SampledOn { get; set; } 
 
     }
 
