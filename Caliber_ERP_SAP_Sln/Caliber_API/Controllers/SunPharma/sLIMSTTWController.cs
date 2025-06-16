@@ -4,6 +4,7 @@ using Caliber_Models.Models.SunPharma;
 using Caliber_Models.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Caliber_API.Controllers.SunPharma
 {
@@ -47,6 +48,77 @@ namespace Caliber_API.Controllers.SunPharma
                                                 System.Data.CommandType.StoredProcedure, "STP_TW_READ_TW_PR",
                                                 new { Plantcode = PlantCode });
             return response != null ? Ok(response) : NotFound();
+        }
+
+        [HttpPost("updateTWPRIdsStatus")]
+        public async Task<IActionResult> UpdateTWPRIds([FromBody] TWPRIdListRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                int UpdatedPRIdsCount = await dbAccess.UpdatePRIdsAsync(ConnectionStrings.GetConnectionString("TW"),
+                    CommandType.StoredProcedure, "STP_UPDATE_TWPRIDS_STATUS", request.PRIds, request.PlantCode);
+
+                if (UpdatedPRIdsCount > 0)
+                {
+                    return Ok(new
+                    {
+                        Message = "All PRIds updated successfully.",
+                        UpdatedCount = UpdatedPRIdsCount
+                    });
+                }
+                else
+                {
+                    return NotFound(new
+                    {
+                        Message = "No PRIds were updated. Please check the provided IDs and PlantCode.",
+                        UpdatedCount = 0
+                    });
+                }
+            }
+            else
+            {
+                return await Task.Run(() => BadRequest());
+            }
+        }
+
+        [HttpGet("ReadPRsProcByLIMS")]
+        public async Task<IActionResult> GetAllTWPrsProcByLims(string? PlantCode)
+        {
+            var response = await dbAccess.ExtReadDataList<TWPRModel>(ConnectionStrings.GetConnectionString("TW"),
+                                                System.Data.CommandType.StoredProcedure, "STP_TW_READ_TW_PR1",
+                                                new { Plantcode = PlantCode });
+            return response != null ? Ok(response) : NotFound();
+        }
+
+        [HttpPost("updateTWPRIdsStatus1")]
+        public async Task<IActionResult> UpdateTWPRIds1([FromBody] TWPRIdListRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                int UpdatedPRIdsCount = await dbAccess.UpdatePRIdsAsync(ConnectionStrings.GetConnectionString("TW"),
+                    CommandType.StoredProcedure, "STP_UPDATE_TWPRIDS_STATUS1", request.PRIds, request.PlantCode);
+
+                if (UpdatedPRIdsCount > 0)
+                {
+                    return Ok(new
+                    {
+                        Message = "All PRIds updated successfully.",
+                        UpdatedCount = UpdatedPRIdsCount
+                    });
+                }
+                else
+                {
+                    return NotFound(new
+                    {
+                        Message = "No PRIds were updated. Please check the provided IDs and PlantCode.",
+                        UpdatedCount = 0
+                    });
+                }
+            }
+            else
+            {
+                return await Task.Run(() => BadRequest());
+            }
         }
     }
 }

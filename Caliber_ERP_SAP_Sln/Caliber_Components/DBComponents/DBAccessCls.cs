@@ -1,4 +1,5 @@
-﻿using Caliber_Components.Logs;
+﻿using Azure.Core;
+using Caliber_Components.Logs;
 
 namespace Caliber_Components.DBComponents
 {
@@ -261,16 +262,7 @@ namespace Caliber_Components.DBComponents
                 ErrorLog.MaintainLog(ex.Message);
                 throw new Exception("An error occurred while retrieving the list of data.", ex);
             }
-        }
-
-        /// <summary>
-        /// Disposes the resources used by the <see cref="DbAccessCls"/> class.
-        /// </summary>
-        public void Dispose()
-        {
-            ConnKey = string.Empty;
-            CommandTimeOut = null;
-        }
+        }        
 
         public async Task<List<T>> ExtReadDataList<T>(string connectionString, CommandType commandType, string commandText, object param)
         {
@@ -293,6 +285,52 @@ namespace Caliber_Components.DBComponents
                 ErrorLog.MaintainLog(ex.Message);
                 throw new Exception("An error occurred while retrieving the list of data.", ex);
             }
+        }
+
+        //-------------added by porus--------------
+        public async Task<int> UpdatePRIdsAsync(string connectionString, CommandType commandType, string commandText, List<int> prIds, string plantCode)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    var PRIdsTable = new DataTable();
+                    PRIdsTable.Columns.Add("PRId", typeof(int));
+                    foreach (var id in prIds)
+                    {
+                        PRIdsTable.Rows.Add(Convert.ToInt32(id));
+                    }
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Ids", PRIdsTable.AsTableValuedParameter("dbo.PRIdsList"));
+                    parameters.Add("@PlantCode", plantCode);
+
+                    var PRIdCount = await connection.QueryAsync<int>(
+                        commandText,
+                        parameters,
+                        commandType: commandType
+                    );
+
+                    return PRIdCount.Count();                                        
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.MaintainLog(ex.Message);
+                throw new Exception("An error occurred while executing the non-query command.", ex);
+            }
+        }
+        //-------------added by porus--------------
+
+        /// <summary>
+        /// Disposes the resources used by the <see cref="DbAccessCls"/> class.
+        /// </summary>
+        public void Dispose()
+        {
+            ConnKey = string.Empty;
+            CommandTimeOut = null;
         }
     }
 }
