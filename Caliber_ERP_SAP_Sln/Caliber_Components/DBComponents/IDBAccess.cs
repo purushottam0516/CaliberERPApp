@@ -74,5 +74,7 @@
                object InputParams,
                object? outputParams
            );
+
+        Task<int> UpdatePRIdsAsync(string connectionString, CommandType commandType, string commandText, List<int> prIds, string plantCode);
     }
 }
